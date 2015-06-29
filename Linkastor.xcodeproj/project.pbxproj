@@ -12,7 +12,35 @@
 		1167FDF21B4189CD00F6BB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF01B4189CD00F6BB64 /* Main.storyboard */; };
 		1167FDF41B4189CD00F6BB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF31B4189CD00F6BB64 /* Assets.xcassets */; };
 		1167FDF71B4189CD00F6BB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF51B4189CD00F6BB64 /* LaunchScreen.storyboard */; };
+		11941B0E1B41FA7B00B63AD4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */; };
+		11941B151B41FA7B00B63AD4 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 11941B0B1B41FA7B00B63AD4 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		11941B1C1B42003B00B63AD4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11941B1A1B42003B00B63AD4 /* MainInterface.storyboard */; };
+		11941B1E1B42005A00B63AD4 /* GroupSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11941B1D1B42005A00B63AD4 /* GroupSelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11941B131B41FA7B00B63AD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1167FDE11B4189CD00F6BB64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11941B0A1B41FA7B00B63AD4;
+			remoteInfo = Extension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		11941B191B41FA7C00B63AD4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				11941B151B41FA7B00B63AD4 /* Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1167FDE91B4189CD00F6BB64 /* Linkastor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linkastor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,10 +50,22 @@
 		1167FDF31B4189CD00F6BB64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1167FDF61B4189CD00F6BB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1167FDF81B4189CD00F6BB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11941B0B1B41FA7B00B63AD4 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		11941B121B41FA7B00B63AD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11941B1B1B42003B00B63AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		11941B1D1B42005A00B63AD4 /* GroupSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1167FDE61B4189CD00F6BB64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11941B081B41FA7B00B63AD4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1167FDEB1B4189CD00F6BB64 /* Linkastor */,
+				11941B0C1B41FA7B00B63AD4 /* Extension */,
 				1167FDEA1B4189CD00F6BB64 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				1167FDE91B4189CD00F6BB64 /* Linkastor.app */,
+				11941B0B1B41FA7B00B63AD4 /* Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +106,17 @@
 			path = Linkastor;
 			sourceTree = "<group>";
 		};
+		11941B0C1B41FA7B00B63AD4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				11941B1A1B42003B00B63AD4 /* MainInterface.storyboard */,
+				11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */,
+				11941B1D1B42005A00B63AD4 /* GroupSelectionTableViewController.swift */,
+				11941B121B41FA7B00B63AD4 /* Info.plist */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +127,34 @@
 				1167FDE51B4189CD00F6BB64 /* Sources */,
 				1167FDE61B4189CD00F6BB64 /* Frameworks */,
 				1167FDE71B4189CD00F6BB64 /* Resources */,
+				11941B191B41FA7C00B63AD4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				11941B141B41FA7B00B63AD4 /* PBXTargetDependency */,
 			);
 			name = Linkastor;
 			productName = Linkastor;
 			productReference = 1167FDE91B4189CD00F6BB64 /* Linkastor.app */;
 			productType = "com.apple.product-type.application";
+		};
+		11941B0A1B41FA7B00B63AD4 /* Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11941B181B41FA7C00B63AD4 /* Build configuration list for PBXNativeTarget "Extension" */;
+			buildPhases = (
+				11941B071B41FA7B00B63AD4 /* Sources */,
+				11941B081B41FA7B00B63AD4 /* Frameworks */,
+				11941B091B41FA7B00B63AD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Extension;
+			productName = Extension;
+			productReference = 11941B0B1B41FA7B00B63AD4 /* Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -94,6 +166,9 @@
 				ORGANIZATIONNAME = "Thibaut LE LEVIER";
 				TargetAttributes = {
 					1167FDE81B4189CD00F6BB64 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					11941B0A1B41FA7B00B63AD4 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -112,6 +187,7 @@
 			projectRoot = "";
 			targets = (
 				1167FDE81B4189CD00F6BB64 /* Linkastor */,
+				11941B0A1B41FA7B00B63AD4 /* Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +203,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11941B091B41FA7B00B63AD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11941B1C1B42003B00B63AD4 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,7 +223,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11941B071B41FA7B00B63AD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11941B1E1B42005A00B63AD4 /* GroupSelectionTableViewController.swift in Sources */,
+				11941B0E1B41FA7B00B63AD4 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11941B141B41FA7B00B63AD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11941B0A1B41FA7B00B63AD4 /* Extension */;
+			targetProxy = 11941B131B41FA7B00B63AD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1167FDF01B4189CD00F6BB64 /* Main.storyboard */ = {
@@ -156,6 +257,14 @@
 				1167FDF61B4189CD00F6BB64 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		11941B1A1B42003B00B63AD4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11941B1B1B42003B00B63AD4 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -246,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Linkastor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
@@ -257,10 +367,33 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Linkastor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		11941B161B41FA7C00B63AD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		11941B171B41FA7C00B63AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -281,6 +414,15 @@
 			buildConfigurations = (
 				1167FDFC1B4189CD00F6BB64 /* Debug */,
 				1167FDFD1B4189CD00F6BB64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11941B181B41FA7C00B63AD4 /* Build configuration list for PBXNativeTarget "Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11941B161B41FA7C00B63AD4 /* Debug */,
+				11941B171B41FA7C00B63AD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
