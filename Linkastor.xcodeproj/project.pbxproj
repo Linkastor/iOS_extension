@@ -12,6 +12,10 @@
 		1167FDF21B4189CD00F6BB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF01B4189CD00F6BB64 /* Main.storyboard */; };
 		1167FDF41B4189CD00F6BB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF31B4189CD00F6BB64 /* Assets.xcassets */; };
 		1167FDF71B4189CD00F6BB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF51B4189CD00F6BB64 /* LaunchScreen.storyboard */; };
+		119055271B4466D5007D1B7C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119055231B4466D5007D1B7C /* Fabric.framework */; };
+		119055281B4466D5007D1B7C /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119055241B4466D5007D1B7C /* TwitterKit.framework */; };
+		119055291B4466D5007D1B7C /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 119055251B4466D5007D1B7C /* TwitterKitResources.bundle */; };
+		1190552A1B4466D5007D1B7C /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 119055261B4466D5007D1B7C /* TwitterCore.framework */; };
 		11941B0E1B41FA7B00B63AD4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */; };
 		11941B151B41FA7B00B63AD4 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 11941B0B1B41FA7B00B63AD4 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		11941B1C1B42003B00B63AD4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11941B1A1B42003B00B63AD4 /* MainInterface.storyboard */; };
@@ -50,6 +54,10 @@
 		1167FDF31B4189CD00F6BB64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1167FDF61B4189CD00F6BB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1167FDF81B4189CD00F6BB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		119055231B4466D5007D1B7C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		119055241B4466D5007D1B7C /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		119055251B4466D5007D1B7C /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		119055261B4466D5007D1B7C /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		11941B0B1B41FA7B00B63AD4 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		11941B121B41FA7B00B63AD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119055271B4466D5007D1B7C /* Fabric.framework in Frameworks */,
+				1190552A1B4466D5007D1B7C /* TwitterCore.framework in Frameworks */,
+				119055281B4466D5007D1B7C /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,10 @@
 		1167FDE01B4189CD00F6BB64 = {
 			isa = PBXGroup;
 			children = (
+				119055231B4466D5007D1B7C /* Fabric.framework */,
+				119055241B4466D5007D1B7C /* TwitterKit.framework */,
+				119055251B4466D5007D1B7C /* TwitterKitResources.bundle */,
+				119055261B4466D5007D1B7C /* TwitterCore.framework */,
 				1167FDEB1B4189CD00F6BB64 /* Linkastor */,
 				11941B0C1B41FA7B00B63AD4 /* Extension */,
 				1167FDEA1B4189CD00F6BB64 /* Products */,
@@ -128,6 +143,7 @@
 				1167FDE61B4189CD00F6BB64 /* Frameworks */,
 				1167FDE71B4189CD00F6BB64 /* Resources */,
 				11941B191B41FA7C00B63AD4 /* Embed App Extensions */,
+				119055221B4466C4007D1B7C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -197,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119055291B4466D5007D1B7C /* TwitterKitResources.bundle in Resources */,
 				1167FDF71B4189CD00F6BB64 /* LaunchScreen.storyboard in Resources */,
 				1167FDF41B4189CD00F6BB64 /* Assets.xcassets in Resources */,
 				1167FDF21B4189CD00F6BB64 /* Main.storyboard in Resources */,
@@ -212,6 +229,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		119055221B4466C4007D1B7C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run b99839285eb6af83038e2fc8194cebe349a424ee bc1e0827a8536451230675e125cf149dba24ea8b01269ee77488c2a851abc47d";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1167FDE51B4189CD00F6BB64 /* Sources */ = {
@@ -355,7 +388,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				INFOPLIST_FILE = Linkastor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
@@ -368,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				INFOPLIST_FILE = Linkastor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
@@ -425,6 +461,7 @@
 				11941B171B41FA7C00B63AD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

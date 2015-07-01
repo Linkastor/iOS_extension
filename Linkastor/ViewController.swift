@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import TwitterKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let logInButton = TWTRLogInButton(logInCompletion: {
+            (session: TWTRSession!, error: NSError!) in
+            // play with Twitter session
+            print(session)
+            print(error)
+        })
+        logInButton.center = self.view.center
+        self.view.addSubview(logInButton)
+
     }
 
     override func didReceiveMemoryWarning() {
