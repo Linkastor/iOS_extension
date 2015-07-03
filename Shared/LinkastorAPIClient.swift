@@ -1,0 +1,116 @@
+//
+//  LinkastorAPIClient.swift
+//  Linkastor
+//
+//  Created by Thibaut LE LEVIER on 01/07/2015.
+//  Copyright © 2015 Thibaut LE LEVIER. All rights reserved.
+//
+
+import UIKit
+
+class LinkastorAPIClient {
+//    static let serverURL = "https://linkastor.herokuapp.com"
+    static let serverURL = "http://localhost:5000"
+
+    class func loginWithTwitter(authToken: String!, authSecret: String!, callback: (user: AnyObject?, error: NSError?) -> Void) {
+        let request = NSMutableURLRequest(URL: NSURL(string: serverURL + "/api/v1/users/sign_in")!)
+        request.HTTPMethod = "post"
+        request.HTTPBody = String("auth_token="+authToken+"&auth_secret="+authSecret).dataUsingEncoding(NSUTF8StringEncoding)
+
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let d = data {
+                var user: AnyObject?
+                var serverError: NSError?
+                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+                    if let userJson = json["user"] {
+                        user = userJson
+                        if let authToken = userJson["auth_token"] as? String {
+                            SessionManager.sharedManager.apiKey = authToken
+                        }
+                    }
+                    else if let errorJson = json["error"] as? String {
+                        serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                    }
+                }
+                
+                callback(user: user, error: serverError)
+            }
+            else {
+                callback(user: nil, error: error)
+            }
+        }
+
+        if let t = task {
+            t.resume()
+        }
+    }
+
+    class func getGroups(callback: (groups: [Dictionary<String, AnyObject>]?, error: NSError?) -> Void) {
+        var urlString = serverURL + "/api/v1/groups"
+        if let apiKey = SessionManager.sharedManager.apiKey {
+            urlString += "?auth_token=" + apiKey
+        }
+        let request = NSURLRequest(URL: NSURL(string: urlString)!)
+
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let d = data {
+                var groups: [Dictionary<String, AnyObject>]?
+                var serverError: NSError?
+                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+                    if let groupsJson = json["groups"] as? [Dictionary<String, AnyObject>] {
+                        groups = groupsJson
+                    }
+                    else if let errorJson = json["message"] as? String {
+                        serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                    }
+                }
+
+                callback(groups: groups, error: serverError)
+            }
+            else {
+                callback(groups: nil, error: error)
+            }
+
+        }
+
+        if let t = task {
+            t.resume()
+        }
+    }
+
+    class func postLink(url: String, title: String, groupID: Int, callback: (error: NSError?) -> Void) {
+        let request = NSMutableURLRequest(URL: NSURL(string: serverURL + "/api/v1/groups/" + String(groupID) + "/links")!)
+        request.HTTPMethod = "post"
+        var postBody = "link[title]=" + title + "&link[url]=" + url
+        if let apiKey = SessionManager.sharedManager.apiKey {
+            postBody += "&auth_token=" + apiKey
+        }
+        request.HTTPBody = String(postBody).dataUsingEncoding(NSUTF8StringEncoding)
+
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let d = data {
+                var serverError: NSError?
+                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+                    if let errorJson = json["error"] as? String {
+                        serverError = NSError(domain: "com.linkastor", code: 422, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                    }
+                }
+
+                callback(error: serverError)
+            }
+            else {
+                callback(error: error)
+            }
+
+        }
+
+        if let t = task {
+            t.resume()
+        }
+
+    }
+
+}

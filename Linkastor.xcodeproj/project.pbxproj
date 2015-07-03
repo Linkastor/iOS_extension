@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112BB30D1B44B842006349B3 /* LinkastorAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11484F981B448A1D0072506B /* LinkastorAPIClient.swift */; };
+		112BB3101B44B8C3006349B3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB30F1B44B8C3006349B3 /* SessionManager.swift */; };
+		112BB3111B44B9DE006349B3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB30F1B44B8C3006349B3 /* SessionManager.swift */; };
+		112BB3131B45409B006349B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3121B45409B006349B3 /* HomeViewController.swift */; };
+		112BB3151B454C1F006349B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3141B454C1F006349B3 /* LoginViewController.swift */; };
+		112BB3171B457C3B006349B3 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */; };
+		11484F991B448A1D0072506B /* LinkastorAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11484F981B448A1D0072506B /* LinkastorAPIClient.swift */; };
 		1167FDED1B4189CD00F6BB64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */; };
-		1167FDEF1B4189CD00F6BB64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1167FDEE1B4189CD00F6BB64 /* ViewController.swift */; };
 		1167FDF21B4189CD00F6BB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF01B4189CD00F6BB64 /* Main.storyboard */; };
 		1167FDF41B4189CD00F6BB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF31B4189CD00F6BB64 /* Assets.xcassets */; };
 		1167FDF71B4189CD00F6BB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF51B4189CD00F6BB64 /* LaunchScreen.storyboard */; };
@@ -47,9 +53,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		112BB30F1B44B8C3006349B3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		112BB3121B45409B006349B3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		112BB3141B454C1F006349B3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		11484F981B448A1D0072506B /* LinkastorAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkastorAPIClient.swift; sourceTree = "<group>"; };
 		1167FDE91B4189CD00F6BB64 /* Linkastor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linkastor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1167FDEE1B4189CD00F6BB64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1167FDF11B4189CD00F6BB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1167FDF31B4189CD00F6BB64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1167FDF61B4189CD00F6BB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,6 +96,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11484F941B4489270072506B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				11484F951B4489480072506B /* Controllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		11484F951B4489480072506B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				112BB3121B45409B006349B3 /* HomeViewController.swift */,
+				112BB3141B454C1F006349B3 /* LoginViewController.swift */,
+				112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		11484F971B448A000072506B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				11484F981B448A1D0072506B /* LinkastorAPIClient.swift */,
+				112BB30F1B44B8C3006349B3 /* SessionManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		1167FDE01B4189CD00F6BB64 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +130,7 @@
 				119055241B4466D5007D1B7C /* TwitterKit.framework */,
 				119055251B4466D5007D1B7C /* TwitterKitResources.bundle */,
 				119055261B4466D5007D1B7C /* TwitterCore.framework */,
+				11484F971B448A000072506B /* Shared */,
 				1167FDEB1B4189CD00F6BB64 /* Linkastor */,
 				11941B0C1B41FA7B00B63AD4 /* Extension */,
 				1167FDEA1B4189CD00F6BB64 /* Products */,
@@ -111,8 +149,8 @@
 		1167FDEB1B4189CD00F6BB64 /* Linkastor */ = {
 			isa = PBXGroup;
 			children = (
+				11484F941B4489270072506B /* Classes */,
 				1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */,
-				1167FDEE1B4189CD00F6BB64 /* ViewController.swift */,
 				1167FDF01B4189CD00F6BB64 /* Main.storyboard */,
 				1167FDF31B4189CD00F6BB64 /* Assets.xcassets */,
 				1167FDF51B4189CD00F6BB64 /* LaunchScreen.storyboard */,
@@ -251,8 +289,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1167FDEF1B4189CD00F6BB64 /* ViewController.swift in Sources */,
+				112BB3151B454C1F006349B3 /* LoginViewController.swift in Sources */,
+				112BB3131B45409B006349B3 /* HomeViewController.swift in Sources */,
+				11484F991B448A1D0072506B /* LinkastorAPIClient.swift in Sources */,
+				112BB3101B44B8C3006349B3 /* SessionManager.swift in Sources */,
 				1167FDED1B4189CD00F6BB64 /* AppDelegate.swift in Sources */,
+				112BB3171B457C3B006349B3 /* GroupsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11941B1E1B42005A00B63AD4 /* GroupSelectionTableViewController.swift in Sources */,
+				112BB30D1B44B842006349B3 /* LinkastorAPIClient.swift in Sources */,
+				112BB3111B44B9DE006349B3 /* SessionManager.swift in Sources */,
 				11941B0E1B41FA7B00B63AD4 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
