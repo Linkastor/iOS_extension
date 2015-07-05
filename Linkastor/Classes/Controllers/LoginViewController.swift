@@ -49,7 +49,9 @@ class LoginViewController: UIViewController {
             }
         })
 
-        logInButton.center = self.view.center
+        var center = self.view.center
+        center.y = self.view.frame.size.height - logInButton.frame.size.height * 2
+        logInButton.center = center
         self.view.addSubview(logInButton)
 
     }
