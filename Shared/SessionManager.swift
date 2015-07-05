@@ -15,35 +15,57 @@ class SessionManager {
     let apiKeyStorageKey = "com.linkastor.api_key"
     let groupListStorageKey = "com.linkastor.groups"
     let selectedGroupStorageKey = "com.linkastor.selectedgroup"
+    let userDefaults = NSUserDefaults(suiteName: "group.com.linkastor.linkastor")
 
     internal
     var apiKey: String? {
         set {
-            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: apiKeyStorageKey)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            if let userDefaults = self.userDefaults {
+                userDefaults.setValue(newValue, forKey: apiKeyStorageKey)
+                userDefaults.synchronize()
+            }
         }
         get {
-            return NSUserDefaults.standardUserDefaults().valueForKey(apiKeyStorageKey) as? String
+            if let userDefaults = self.userDefaults {
+                return userDefaults.valueForKey(apiKeyStorageKey) as? String
+            }
+            else {
+                return nil
+            }
         }
     }
 
     var groups: [Dictionary<String, AnyObject>]? {
         set {
-            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: groupListStorageKey)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            if let userDefaults = self.userDefaults {
+                userDefaults.setValue(newValue, forKey: groupListStorageKey)
+                userDefaults.synchronize()
+            }
         }
         get {
-            return NSUserDefaults.standardUserDefaults().valueForKey(groupListStorageKey) as? [Dictionary<String, AnyObject>]
+            if let userDefaults = self.userDefaults {
+                return userDefaults.valueForKey(groupListStorageKey) as? [Dictionary<String, AnyObject>]
+            }
+            else {
+                return nil
+            }
         }
     }
 
     var selectedGroup: Dictionary<String, AnyObject>? {
         set {
-            NSUserDefaults.standardUserDefaults().setValue(newValue, forKey: selectedGroupStorageKey)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            if let userDefaults = self.userDefaults {
+                userDefaults.setValue(newValue, forKey: selectedGroupStorageKey)
+                userDefaults.synchronize()
+            }
         }
         get {
-            return NSUserDefaults.standardUserDefaults().valueForKey(selectedGroupStorageKey) as? Dictionary<String, AnyObject>
+            if let userDefaults = self.userDefaults {
+                return userDefaults.valueForKey(selectedGroupStorageKey) as? Dictionary<String, AnyObject>
+            }
+            else {
+                return nil
+            }
         }
     }
 

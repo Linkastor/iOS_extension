@@ -9,33 +9,85 @@
 import UIKit
 import Social
 
-class ShareViewController: SLComposeServiceViewController {
+class ShareViewController: SLComposeServiceViewController, GroupSelectionTableViewControllerDelegate {
+
+    override func presentationAnimationDidFinish() {
+        super.presentationAnimationDidFinish()
+    }
     
     override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
+        if let _ = SessionManager.sharedManager.selectedGroup {
+            return true
+        }
+
+        return false
     }
 
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-    
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+        if let context = self.extensionContext {
+            if let item = context.inputItems.first {
+                if let attachments = item.attachments {
+                    if let provider = attachments!.first as? NSItemProvider {
+                        if provider.hasItemConformingToTypeIdentifier("public.url") {
+                            provider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (url, error) -> Void in
+                                if let u = url as? NSURL {
+                                    if let selectedGroup = SessionManager.sharedManager.selectedGroup {
+                                        if let groupID = selectedGroup["id"] as? Int {
+                                            LinkastorAPIClient.postLink(u.absoluteString, title: self.contentText, groupID: groupID, callback: { (error) -> Void in
+                                                if let e = error {
+                                                    print(e)
+                                                }
+
+                                                self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                                            })
+                                        }
+                                    }
+
+
+
+                                }
+                            })
+                        }
+                    }
+
+                }
+            }
+        }
+
+
     }
 
     override func configurationItems() -> [AnyObject]! {
-        let group = SLComposeSheetConfigurationItem()
-        group.title = "Group"
-        group.value = "Test"
-        group.tapHandler = showGroupSelection
-
-        return [group]
+        return [groupConfigurationItem]
     }
+
+    lazy var groupConfigurationItem: SLComposeSheetConfigurationItem = {
+        let item = SLComposeSheetConfigurationItem()
+        item.title = "Group"
+        if let selectedGroup = SessionManager.sharedManager.selectedGroup {
+            if let groupName = selectedGroup["name"] as? String {
+                item.value = groupName
+            }
+        }
+        else {
+            item.value = "[Select a group]"
+        }
+        item.tapHandler = self.showGroupSelection
+        return item
+    }()
 
     func showGroupSelection() {
         let groupViewController = GroupSelectionTableViewController(style: .Plain)
-
+        groupViewController.delegate = self
         pushConfigurationViewController(groupViewController)
+    }
+
+    // MARK: GroupSelectionTableViewControllerDelegate
+    func userDidSelectAGroup(group: Dictionary<String, AnyObject>) {
+        SessionManager.sharedManager.selectedGroup = group
+        if let groupName = group["name"] as? String {
+            self.groupConfigurationItem.value = groupName
+        }
     }
 
 }

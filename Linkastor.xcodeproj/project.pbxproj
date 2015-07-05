@@ -57,6 +57,8 @@
 		112BB3121B45409B006349B3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		112BB3141B454C1F006349B3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		112BB3181B482104006349B3 /* Linkastor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Linkastor.entitlements; sourceTree = "<group>"; };
+		112BB3191B482173006349B3 /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Extension.entitlements; sourceTree = "<group>"; };
 		11484F981B448A1D0072506B /* LinkastorAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkastorAPIClient.swift; sourceTree = "<group>"; };
 		1167FDE91B4189CD00F6BB64 /* Linkastor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linkastor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		1167FDEB1B4189CD00F6BB64 /* Linkastor */ = {
 			isa = PBXGroup;
 			children = (
+				112BB3181B482104006349B3 /* Linkastor.entitlements */,
 				11484F941B4489270072506B /* Classes */,
 				1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */,
 				1167FDF01B4189CD00F6BB64 /* Main.storyboard */,
@@ -162,6 +165,7 @@
 		11941B0C1B41FA7B00B63AD4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				112BB3191B482173006349B3 /* Extension.entitlements */,
 				11941B1A1B42003B00B63AD4 /* MainInterface.storyboard */,
 				11941B0D1B41FA7B00B63AD4 /* ShareViewController.swift */,
 				11941B1D1B42005A00B63AD4 /* GroupSelectionTableViewController.swift */,
@@ -221,9 +225,21 @@
 				TargetAttributes = {
 					1167FDE81B4189CD00F6BB64 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 5PUDMY2H3Q;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					11941B0A1B41FA7B00B63AD4 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 5PUDMY2H3Q;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -432,6 +448,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Linkastor/Linkastor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
@@ -439,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -446,22 +466,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Linkastor/Linkastor.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				INFOPLIST_FILE = Linkastor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		11941B161B41FA7C00B63AD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -469,10 +497,14 @@
 		11941B171B41FA7C00B63AD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelevier.Linkastor.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
