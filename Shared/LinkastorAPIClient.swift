@@ -9,8 +9,8 @@
 import UIKit
 
 class LinkastorAPIClient {
-//    static let serverURL = "https://linkastor.herokuapp.com"
-    static let serverURL = "http://localhost:5000"
+    static let serverURL = "https://linkastor.herokuapp.com"
+//    static let serverURL = "http://localhost:5000"
 
     class func loginWithTwitter(authToken: String!, authSecret: String!, callback: (user: AnyObject?, error: NSError?) -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: serverURL + "/api/v1/users/sign_in")!)
