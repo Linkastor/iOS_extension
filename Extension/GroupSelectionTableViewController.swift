@@ -42,6 +42,9 @@ class GroupSelectionTableViewController: UITableViewController {
         if let groups = SessionManager.sharedManager.groups {
             self.groups = groups
         }
+        else {
+            self.refreshGroups(nil)
+        }
 
         self.title = "Select a group"
 
@@ -97,7 +100,7 @@ class GroupSelectionTableViewController: UITableViewController {
     }
 
     // MARK: - refresh
-    func refreshGroups(sender: AnyObject) {
+    func refreshGroups(sender: AnyObject?) {
         LinkastorAPIClient.getGroups { (groups, error) -> Void in
             if let g = groups {
                 self.groups = g
