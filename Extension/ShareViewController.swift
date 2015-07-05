@@ -13,6 +13,22 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
 
     override func presentationAnimationDidFinish() {
         super.presentationAnimationDidFinish()
+
+        guard let _ = SessionManager.sharedManager.apiKey else {
+
+            let alert = UIAlertController(title: "Error", message: "Please log in the Linkastor app first", preferredStyle: .Alert)
+
+            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+            })
+            alert.addAction(cancel)
+
+            self.showViewController(alert, sender: nil)
+
+
+
+            return
+        }
     }
     
     override func isContentValid() -> Bool {
@@ -35,10 +51,18 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
                                         if let groupID = selectedGroup["id"] as? Int {
                                             LinkastorAPIClient.postLink(u.absoluteString, title: self.contentText, groupID: groupID, callback: { (error) -> Void in
                                                 if let e = error {
-                                                    print(e)
-                                                }
+                                                    let alert = UIAlertController(title: "Error", message: e.localizedDescription, preferredStyle: .Alert)
 
-                                                self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                                                    let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                                                        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                                                    })
+                                                    alert.addAction(cancel)
+                                                    
+                                                    self.showViewController(alert, sender: nil)
+                                                }
+                                                else {
+                                                    self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                                                }
                                             })
                                         }
                                     }
@@ -89,5 +113,4 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
             self.groupConfigurationItem.value = groupName
         }
     }
-
 }
