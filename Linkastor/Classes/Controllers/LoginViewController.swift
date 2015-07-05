@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
         let logInButton = TWTRLogInButton(logInCompletion: {
             (session: TWTRSession!, error: NSError!) in
             if let s = session {
@@ -25,6 +23,7 @@ class LoginViewController: UIViewController {
                         return
                     }
                     else if let e = error {
+                        print(e)
                         let alert = UIAlertController(title: "Error",
                             message: e.localizedDescription,
                             preferredStyle: .Alert)

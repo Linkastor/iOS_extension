@@ -13,6 +13,7 @@ class SessionManager {
 
     private
     let apiKeyStorageKey = "com.linkastor.api_key"
+    let userStorageKey = "com.linkastor.user"
     let groupListStorageKey = "com.linkastor.groups"
     let selectedGroupStorageKey = "com.linkastor.selectedgroup"
     let userDefaults = NSUserDefaults(suiteName: "group.com.linkastor.linkastor")
@@ -28,6 +29,23 @@ class SessionManager {
         get {
             if let userDefaults = self.userDefaults {
                 return userDefaults.valueForKey(apiKeyStorageKey) as? String
+            }
+            else {
+                return nil
+            }
+        }
+    }
+
+    var user: Dictionary<String, AnyObject>? {
+        set {
+            if let userDefaults = self.userDefaults {
+                userDefaults.setValue(newValue, forKey: userStorageKey)
+                userDefaults.synchronize()
+            }
+        }
+        get {
+            if let userDefaults = self.userDefaults {
+                return userDefaults.valueForKey(userStorageKey) as? Dictionary<String, AnyObject>
             }
             else {
                 return nil
@@ -71,6 +89,7 @@ class SessionManager {
 
     class func logout() {
         SessionManager.sharedManager.apiKey = nil
+        SessionManager.sharedManager.user = nil
         SessionManager.sharedManager.groups = nil
         SessionManager.sharedManager.selectedGroup = nil
     }

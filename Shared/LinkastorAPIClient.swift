@@ -20,21 +20,31 @@ class LinkastorAPIClient {
         let urlSession = NSURLSession.sharedSession()
         let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
             if let d = data {
-                var user: AnyObject?
-                var serverError: NSError?
-                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
-                    if let userJson = json["user"] {
-                        user = userJson
-                        if let authToken = userJson["auth_token"] as? String {
-                            SessionManager.sharedManager.apiKey = authToken
+                do {
+                    var user: AnyObject?
+                    var serverError: NSError?
+
+                    if let json = try NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+
+                        if let userJson = json["user"] as? Dictionary<String, AnyObject> {
+                            user = userJson
+                            SessionManager.sharedManager.user = userJson
+                            if let authToken = userJson["auth_token"] as? String {
+                                SessionManager.sharedManager.apiKey = authToken
+                            }
+                        }
+                        else if let errorJson = json["error"] as? String {
+                            serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
                         }
                     }
-                    else if let errorJson = json["error"] as? String {
-                        serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
-                    }
+
+                    callback(user: user, error: serverError)
+                } catch {
+                    let e = error as NSError
+                    callback(user: nil, error: e)
                 }
                 
-                callback(user: user, error: serverError)
+
             }
             else {
                 callback(user: nil, error: error)

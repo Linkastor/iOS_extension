@@ -12,7 +12,6 @@
 		112BB3111B44B9DE006349B3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB30F1B44B8C3006349B3 /* SessionManager.swift */; };
 		112BB3131B45409B006349B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3121B45409B006349B3 /* HomeViewController.swift */; };
 		112BB3151B454C1F006349B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3141B454C1F006349B3 /* LoginViewController.swift */; };
-		112BB3171B457C3B006349B3 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */; };
 		11484F991B448A1D0072506B /* LinkastorAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11484F981B448A1D0072506B /* LinkastorAPIClient.swift */; };
 		1167FDED1B4189CD00F6BB64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1167FDEC1B4189CD00F6BB64 /* AppDelegate.swift */; };
 		1167FDF21B4189CD00F6BB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1167FDF01B4189CD00F6BB64 /* Main.storyboard */; };
@@ -56,7 +55,6 @@
 		112BB30F1B44B8C3006349B3 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		112BB3121B45409B006349B3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		112BB3141B454C1F006349B3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		112BB3181B482104006349B3 /* Linkastor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Linkastor.entitlements; sourceTree = "<group>"; };
 		112BB3191B482173006349B3 /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Extension.entitlements; sourceTree = "<group>"; };
 		11484F981B448A1D0072506B /* LinkastorAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkastorAPIClient.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			children = (
 				112BB3121B45409B006349B3 /* HomeViewController.swift */,
 				112BB3141B454C1F006349B3 /* LoginViewController.swift */,
-				112BB3161B457C3B006349B3 /* GroupsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -310,7 +307,6 @@
 				11484F991B448A1D0072506B /* LinkastorAPIClient.swift in Sources */,
 				112BB3101B44B8C3006349B3 /* SessionManager.swift in Sources */,
 				1167FDED1B4189CD00F6BB64 /* AppDelegate.swift in Sources */,
-				112BB3171B457C3B006349B3 /* GroupsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
