@@ -15,7 +15,14 @@ protocol GroupSelectionTableViewControllerDelegate {
 class GroupSelectionTableViewController: UITableViewController {
 
     let cellIdentifier = "cellIdentifier"
-    var groups = [Dictionary<String, AnyObject>]()
+    var groups = [Dictionary<String, AnyObject>]() {
+        didSet {
+            self.tableView.reloadData()
+            if let refreshControl = self.refreshControl {
+                refreshControl.endRefreshing()
+            }
+        }
+    }
     var delegate :GroupSelectionTableViewControllerDelegate?
 
     override init(style: UITableViewStyle) {
@@ -37,6 +44,11 @@ class GroupSelectionTableViewController: UITableViewController {
         }
 
         self.title = "Select a group"
+
+        self.tableView.backgroundColor = UIColor.clearColor()
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: "refreshGroups:", forControlEvents: .ValueChanged)
     }
 
     // MARK: - Table view data source
@@ -56,6 +68,18 @@ class GroupSelectionTableViewController: UITableViewController {
             }
         }
 
+        if let groupID = group["id"] as? Int {
+            if let selectedGroup = SessionManager.sharedManager.selectedGroup {
+                if let selectedGroupID = selectedGroup["id"] as? Int {
+                    if groupID == selectedGroupID {
+                        cell.accessoryType = .Checkmark
+                    }
+                }
+            }
+        }
+
+        cell.backgroundColor = UIColor.clearColor()
+
         return cell
     }
 
@@ -72,14 +96,15 @@ class GroupSelectionTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
+    // MARK: - refresh
+    func refreshGroups(sender: AnyObject) {
+        LinkastorAPIClient.getGroups { (groups, error) -> Void in
+            if let g = groups {
+                self.groups = g
+                SessionManager.sharedManager.groups = g
+            }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        }
     }
-    */
 
 }
