@@ -27,7 +27,6 @@ class HomeViewController: UIViewController {
             })
 
             if let user = SessionManager.sharedManager.user {
-                print(user)
                 if let name = user["name"] as? String {
                     self.nameLabel.text = name
                 }

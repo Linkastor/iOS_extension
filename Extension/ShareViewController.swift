@@ -112,5 +112,6 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
         if let groupName = group["name"] as? String {
             self.groupConfigurationItem.value = groupName
         }
+        self.validateContent()
     }
 }

@@ -68,16 +68,21 @@ class LinkastorAPIClient {
             if let d = data {
                 var groups: [Dictionary<String, AnyObject>]?
                 var serverError: NSError?
-                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
-                    if let groupsJson = json["groups"] as? [Dictionary<String, AnyObject>] {
-                        groups = groupsJson
+                do {
+                    if let json = try NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+                        if let groupsJson = json["groups"] as? [Dictionary<String, AnyObject>] {
+                            groups = groupsJson
+                        }
+                        else if let errorJson = json["message"] as? String {
+                            serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                        }
                     }
-                    else if let errorJson = json["message"] as? String {
-                        serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
-                    }
-                }
 
-                callback(groups: groups, error: serverError)
+                    callback(groups: groups, error: serverError)
+                } catch {
+                    let e = error as NSError
+                    callback(groups: nil, error: e)
+                }
             }
             else {
                 callback(groups: nil, error: error)
@@ -103,13 +108,17 @@ class LinkastorAPIClient {
         let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
             if let d = data {
                 var serverError: NSError?
-                if let json = try!NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
-                    if let errorJson = json["error"] as? String {
-                        serverError = NSError(domain: "com.linkastor", code: 422, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                do {
+                    if let json = try NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
+                        if let errorJson = json["error"] as? String {
+                            serverError = NSError(domain: "com.linkastor", code: 422, userInfo: [NSLocalizedDescriptionKey : errorJson])
+                        }
                     }
+                    callback(error: serverError)
+                } catch {
+                    let e = error as NSError
+                    callback(error: e)
                 }
-
-                callback(error: serverError)
             }
             else {
                 callback(error: error)
