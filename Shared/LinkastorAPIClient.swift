@@ -9,7 +9,7 @@
 import UIKit
 
 class LinkastorAPIClient {
-    static let serverURL = "https://linkastor.herokuapp.com"
+    static let serverURL = "http://www.linkastor.com"
 //    static let serverURL = "http://localhost:5000"
 
     class func loginWithTwitter(authToken: String!, authSecret: String!, callback: (user: AnyObject?, error: NSError?) -> Void) {
@@ -51,9 +51,7 @@ class LinkastorAPIClient {
             }
         }
 
-        if let t = task {
-            t.resume()
-        }
+        task.resume()
     }
 
     class func getGroups(callback: (groups: [Dictionary<String, AnyObject>]?, error: NSError?) -> Void) {
@@ -90,9 +88,7 @@ class LinkastorAPIClient {
 
         }
 
-        if let t = task {
-            t.resume()
-        }
+        task.resume()
     }
 
     class func postLink(url: String, title: String, groupID: Int, callback: (error: NSError?) -> Void) {
@@ -126,9 +122,7 @@ class LinkastorAPIClient {
 
         }
 
-        if let t = task {
-            t.resume()
-        }
+        task.resume()
 
     }
 

@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         let logInButton = TWTRLogInButton(logInCompletion: {
-            (session: TWTRSession!, error: NSError!) in
+            (session: TWTRSession?, error: NSError?) -> Void in
             if let s = session {
                 LinkastorAPIClient.loginWithTwitter(s.authToken, authSecret: s.authTokenSecret, callback: { (user, error) -> Void in
                     if let _ = user {
