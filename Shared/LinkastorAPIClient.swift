@@ -9,7 +9,7 @@
 import UIKit
 
 class LinkastorAPIClient {
-    static let serverURL = "http://www.linkastor.com"
+    static let serverURL = "http://linkastor.com"
 //    static let serverURL = "http://localhost:5000"
 
     class func loginWithTwitter(authToken: String!, authSecret: String!, callback: (user: AnyObject?, error: NSError?) -> Void) {
