@@ -53,6 +53,12 @@ class SessionManager {
         }
     }
 
+    var username: String? {
+        get {
+            return self.user?["name"] as? String
+        }
+    }
+
     var groups: [Dictionary<String, AnyObject>]? {
         set {
             if let userDefaults = self.userDefaults {

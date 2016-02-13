@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -17,7 +18,9 @@ class LoginViewController: UIViewController {
         let logInButton = TWTRLogInButton(logInCompletion: {
             (session: TWTRSession?, error: NSError?) -> Void in
             if let s = session {
+                MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 LinkastorAPIClient.loginWithTwitter(s.authToken, authSecret: s.authTokenSecret, callback: { (user, error) -> Void in
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
                     if let _ = user {
                         self.dismissViewControllerAnimated(true, completion: nil)
                         return

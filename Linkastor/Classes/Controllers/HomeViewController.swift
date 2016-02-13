@@ -26,11 +26,13 @@ class HomeViewController: UIViewController {
                 }
             })
 
-            if let user = SessionManager.sharedManager.user {
-                if let name = user["name"] as? String {
-                    self.nameLabel.text = name
-                }
+
+            var s: String?
+            if let name = SessionManager.sharedManager.username {
+                s = "Hello " + name + "!"
             }
+            self.nameLabel.text = s
+
         }
         else {
             self.performSegueWithIdentifier("showLogin", sender: nil)

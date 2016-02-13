@@ -19,11 +19,11 @@ class LinkastorAPIClient {
 
         let urlSession = NSURLSession.sharedSession()
         let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            var user: AnyObject?
+            var returnError = error
+
             if let d = data {
                 do {
-                    var user: AnyObject?
-                    var serverError: NSError?
-
                     if let json = try NSJSONSerialization.JSONObjectWithData(d, options: .AllowFragments) as? Dictionary<String, AnyObject> {
 
                         if let userJson = json["user"] as? Dictionary<String, AnyObject> {
@@ -33,22 +33,19 @@ class LinkastorAPIClient {
                                 SessionManager.sharedManager.apiKey = authToken
                             }
                         }
-                        else if let errorJson = json["error"] as? String {
-                            serverError = NSError(domain: "com.linkastor", code: 403, userInfo: [NSLocalizedDescriptionKey : errorJson])
-                        }
                     }
-
-                    callback(user: user, error: serverError)
                 } catch {
                     let e = error as NSError
-                    callback(user: nil, error: e)
+                    returnError = e
                 }
                 
 
             }
-            else {
-                callback(user: nil, error: error)
-            }
+
+            dispatch_async(dispatch_get_main_queue(),{
+                callback(user: user, error: returnError)
+            })
+
         }
 
         task.resume()
