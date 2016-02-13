@@ -93,6 +93,12 @@ class SessionManager {
         }
     }
 
+    var selectedGroupID: Int? {
+        get {
+            return self.selectedGroup?["id"] as? Int
+        }
+    }
+
     class func logout() {
         SessionManager.sharedManager.apiKey = nil
         SessionManager.sharedManager.user = nil

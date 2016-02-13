@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2707AA23792401EBB8BDB7A401BCAD42AC6A527B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2707AA23792401EBB8BDB7A401BCAD42AC6A527B" : 0,
+    "75195B86A56C9BA68DDF276ADAC20CC522BBE999" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2F6F2F4F-7951-4886-8A12-C115EEE1B925",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2707AA23792401EBB8BDB7A401BCAD42AC6A527B" : "Linkastor_iOS\/",
+    "75195B86A56C9BA68DDF276ADAC20CC522BBE999" : "..\/ElCurator\/ios"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Linkastor",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Linkastor.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Linkastor\/iOS_extension.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2707AA23792401EBB8BDB7A401BCAD42AC6A527B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.octo.com:elcurator\/ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "75195B86A56C9BA68DDF276ADAC20CC522BBE999"
+    }
+  ]
+}

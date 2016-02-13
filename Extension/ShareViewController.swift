@@ -23,6 +23,21 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
             })
             alert.addAction(cancel)
 
+            let openApp = UIAlertAction(title: "Open Linkastor", style: .Default, handler: { (action) -> Void in
+                let url = NSURL(string: "linkastor://")!
+                var responder: UIResponder? = self
+                while let r = responder {
+                    if r.respondsToSelector("openURL:") {
+                        r.performSelector("openURL:", withObject: url)
+                        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                        break
+                    }
+                    responder = r.nextResponder()
+                }
+            })
+
+            alert.addAction(openApp)
+
             self.showViewController(alert, sender: nil)
 
 
@@ -40,44 +55,39 @@ class ShareViewController: SLComposeServiceViewController, GroupSelectionTableVi
     }
 
     override func didSelectPost() {
-        if let context = self.extensionContext {
-            if let item = context.inputItems.first {
-                if let attachments = item.attachments {
-                    if let provider = attachments!.first as? NSItemProvider {
-                        if provider.hasItemConformingToTypeIdentifier("public.url") {
-                            provider.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (url, error) -> Void in
-                                if let u = url as? NSURL {
-                                    if let selectedGroup = SessionManager.sharedManager.selectedGroup {
-                                        if let groupID = selectedGroup["id"] as? Int {
-                                            LinkastorAPIClient.postLink(u.absoluteString, title: self.contentText, groupID: groupID, callback: { (error) -> Void in
-                                                if let e = error {
-                                                    let alert = UIAlertController(title: "Error", message: e.localizedDescription, preferredStyle: .Alert)
 
-                                                    let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
-                                                        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
-                                                    })
-                                                    alert.addAction(cancel)
-                                                    
-                                                    self.showViewController(alert, sender: nil)
-                                                }
-                                                else {
-                                                    self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
-                                                }
-                                            })
-                                        }
-                                    }
+        self.extensionContext?.URLForContext(withCallback: { (url) -> Void in
+            if let u = url {
+                LinkastorAPIClient.postLink(u.absoluteString,
+                    title: self.contentText,
+                    groupID: SessionManager.sharedManager.selectedGroupID!,
+                    callback: { (error) -> Void in
+                        if let e = error {
+                            let alert = UIAlertController(title: "Error", message: e.localizedDescription, preferredStyle: .Alert)
 
-
-
-                                }
+                            let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                                self.extensionContext?.completeRequestReturningItems([], completionHandler: nil)
                             })
+                            alert.addAction(cancel)
+
+                            self.showViewController(alert, sender: nil)
                         }
-                    }
-
-                }
+                        else {
+                            self.extensionContext?.completeRequestReturningItems([], completionHandler: nil)
+                        }
+                })
             }
-        }
+            else {
+                let alert = UIAlertController(title: "Error",
+                    message: "Cannot find any URL in the content you are trying to share", preferredStyle: .Alert)
+                let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                    self.extensionContext?.completeRequestReturningItems([], completionHandler: nil)
+                })
+                alert.addAction(cancel)
 
+                self.showViewController(alert, sender: nil)
+            }
+        })
 
     }
 
