@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
                     }
                     else if let e = error {
                         print(e)
-                        let alert = UIAlertController(title: "Error",
+                        let alert = UIAlertController(title: "Linkastor Login Error",
                             message: e.localizedDescription,
                             preferredStyle: .Alert)
 
@@ -36,16 +36,14 @@ class LoginViewController: UIViewController {
                 })
             }
             else {
-                if let e = error {
-                    let alert = UIAlertController(title: "Error",
-                        message: e.localizedDescription,
-                        preferredStyle: .Alert)
+                let alert = UIAlertController(title: "Twitter Login Error",
+                    message: error?.localizedDescription,
+                    preferredStyle: .Alert)
 
-                    let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-                    alert.addAction(cancel)
+                let cancel = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                alert.addAction(cancel)
 
-                    self.showViewController(alert, sender: nil)
-                }
+                self.showViewController(alert, sender: nil)
             }
         })
 
